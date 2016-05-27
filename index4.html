@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Trainning - A Peek into Components</title>
+    </head>
+    <body>
+        <div id="app">
+            <counter titulo="Likes"></counter>
+            <counter titulo="Dislikes"></counter>
+        </div>
+
+        <template id="counter-template">
+            <h1>{{ titulo }}</h1>
+            <button @click="count ++">{{ count }}</button>
+        </template>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
+        <script>
+            new Vue({
+                el: "#app",
+                components: {
+                    counter: {
+                        template: "#counter-template",
+                        props: ["titulo"],
+                        data: function() {
+                            return { count: 0 };
+                        }
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

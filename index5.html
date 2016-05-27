@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Trainning - Computed Properties</title>
+    </head>
+    <body>
+        <h1>{{ fullName }}</h1>
+        <input type="text" v-model="first" placeholder="Primeiro Nome">
+        <input type="text" v-model="last" placeholder="Segundo Nome">
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
+        <script>
+            new Vue({
+                el: "body",
+                data: {
+                    first: "Ennio",
+                    last: "Simões",
+                    fullName: "Ennio Simões"
+                },
+                watch: {
+                    first: function(first) {
+                        this.fullName = first + " " + this.last;
+                    },
+                    last: function(last) {
+                        this.fullName = this.first + " " + last;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Vue Trainning - Event Handling</title>
+        <!-- Latest compiled and minified CSS -->
+        <!-- Latest compiled and minified JavaScript -->
+    </head>
+    <body>
+        <div id="app">
+                <button type="submit" @click="atualizaContador">Contador {{ count }}</button>
+                OU
+                <button type="submit" @click="count ++">Contador {{ count }}</button>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js"></script>
+        <script>
+            new Vue({
+                el: "#app",
+                data: {
+                    count: 0
+                },
+                methods: {
+                    atualizaContador: function() {
+                        this.count ++;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
