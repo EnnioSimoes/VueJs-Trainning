@@ -5,27 +5,46 @@
         <title>Vue Trainning - Subscription Plans Exercise</title>
     </head>
     <body>
-        <h1>{{ fullName }}</h1>
-        <input type="text" v-model="first" placeholder="Primeiro Nome">
-        <input type="text" v-model="last" placeholder="Segundo Nome">
+        <div id="app">
+            <div v-for="plan in plans">
+                <plan :plan="plan"></plan>
+            </div>
+        </div>
 
-
+        <template id="plan-template">
+            <div>
+                <span>{{ plan.name }}</span>
+                <span>{{ plan.price }}/Mês </span>
+                <button @click="setActivePlan">Upgrade</button>
+            </div>
+        </template>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"></script>
         <script>
             new Vue({
-                el: "body",
+                el: "#app",
                 data: {
-                    first: "Ennio",
-                    last: "Simões",
-                    fullName: "Ennio Simões"
+                    plans: [
+                        {name: "Enterprise", price: 100},
+                        {name: "Pro", price: 50},
+                        {name: "Personal", price: 10},
+                        {name: "Free", price: 0},
+                    ]
                 },
-                watch: {
-                    first: function(first) {
-                        this.fullName = first + " " + this.last;
-                    },
-                    last: function(last) {
-                        this.fullName = this.first + " " + last;
+
+
+                components: {
+                    plan: {
+                        template: "#plan-template",
+                        props: ["plan"],
+                        data: function() {
+
+                        },
+                        methods: {
+                            setActivePlan: function() {
+
+                            }
+                        }
                     }
                 }
             });
